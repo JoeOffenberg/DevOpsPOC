@@ -5,7 +5,7 @@ pipeline {
     stage('Retrieve Sources') {
               steps {
          echo workspace
-         git branch: 'master', credentialsId: 'github_JO', url: 'https://github.com/JoeOffenberg/CorpSite-1'
+         git branch: 'master', credentialsId: 'github_JO', url: 'https://github.com/JoeOffenberg/DevOpsPoC'
          
     	}
     }
