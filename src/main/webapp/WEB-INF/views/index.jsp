@@ -16,7 +16,7 @@
 								<p class="text-center mb0">
 									
 									We believe in the strength of teams.  We take care of our employees!  We have fitness rooms, 
-									coffee, bean bag chairs and an outdoor pool, and casual dress.		
+									gourmet coffee, bean bag chairs and an outdoor pool, and casual dress.		
 																			
 								</p>
 								
