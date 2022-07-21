@@ -11,7 +11,7 @@
          },
          "action":"challenge",
          "priority":1320,
-         "paused":false,
+         "paused":true,
          "description":"Protect blog login redirect",
          "ref":""
       },
