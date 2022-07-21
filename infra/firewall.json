@@ -10,7 +10,7 @@
             "ref":""
          },
          "action":"challenge",
-         "priority":1200,
+         "priority":1300,
          "paused":false,
          "description":"Protect blog login redirect",
          "ref":""
