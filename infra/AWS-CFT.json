@@ -8,7 +8,7 @@
 					"database": "@@env.database@@",
 					"password": "L00pBack",
 					"connector": "mysql",
-					"port": "5123",
+					"port": "5124",
 					"host": "@@env.host@@",
 					"username": "demo3",
 					"awsRegion": "eu-central-1"
