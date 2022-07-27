@@ -206,13 +206,24 @@ pipeline {
     }
     
     }//Functional Testing
+    
+    stage ('Change Management'){
+    steps {
+        script{
+	snDevOpsPackage(name: "Globex-IaC-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "globex-iac.war", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "GlobexCorp"}], "branchName":"master"}""")
+        snDevOpsChange()
+	
+	}         
+            
+        }
+    
+    }//Change Management
+    
+    
     stage ('PRD Deployment'){
     steps {
         script{
-        
-        snDevOpsPackage(name: "Globex-IaC-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "globex-iac.war", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "GlobexCorp"}], "branchName":"master"}""")
-        snDevOpsChange()
-        sh "mv  target/globex-web.war target/dev.war"
+	sh "mv  target/globex-web.war target/dev.war"
         azureWebAppPublish (azureCredentialsId: '5fadee4f-f7c0-4701-b87f-de072acb0fea',
                    resourceGroup: 'globex-web-1607528956753-rg', appName: 'globex-web-1', deployOnlyIfSuccessful: false,
                    publishType: 'webAppLinux', filePath: '*.war', sourceDirectory: 'target')
