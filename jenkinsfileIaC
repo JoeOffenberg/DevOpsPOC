@@ -66,7 +66,7 @@ pipeline {
             steps {
             script{
             changeSetId = snDevOpsConfigUpload(
-            applicationName: "Globex-Website-Front-End",
+            applicationName: "FMR-POC",
             target:"component",
             namePath:"CFT", 
             configFile:"infra/AWS-CFT.json",
@@ -76,7 +76,7 @@ pipeline {
             
             snDevOpsConfigUpload(
             changesetNumber: "${changeSetId}",
-            applicationName: "Globex-Website-Front-End",
+            applicationName: "FMR-POC",
             target:"component",
             namePath:"firewall", 
             configFile:"infra/firewall.json",
@@ -89,7 +89,7 @@ pipeline {
 
                                     echo "Change set registration for ${changeSetId}"
 				    sleep(time:5,unit:"SECONDS")  
-                                    changeSetRegResult = snDevOpsConfigRegisterPipeline(changesetNumber:"${changeSetId}", applicationName: "Globex-Website-Front-End")
+                                    changeSetRegResult = snDevOpsConfigRegisterPipeline(changesetNumber:"${changeSetId}", applicationName: "FMR-POC")
                                     echo "change set registration set result ${changeSetRegResult}"
                                     
                               } else {
@@ -106,9 +106,9 @@ pipeline {
             script{
             sleep(time:5,unit:"SECONDS")    
             validateRespnonse = snDevOpsConfigValidate(
-              applicationName: "Globex-Website-Front-End",
+              applicationName: "FMR-POC",
               deployableName:"Globex-Prd")
-            snapshot=snDevOpsConfigGetSnapshots(applicationName: "Globex-Website-Front-End",
+            snapshot=snDevOpsConfigGetSnapshots(applicationName: "FMR-POC",
               deployableName:"Globex-Prd",
               changesetNumber: "${changeSetId}")
 	      echo  "snapshot =  ${snapshot}"
@@ -123,7 +123,7 @@ pipeline {
 	         sh "exit 1"}
               }else
 	       { echo "!!!!!!!!!! RESPONSE FROM VALIDATE :  ${snapshotObject[0].validation}" }
-	       changeSetRegResult = snDevOpsConfigRegisterPipeline(snapshotName:"${snapshotObject[0].name}", applicationName: "Globex-Website-Front-End")
+	       changeSetRegResult = snDevOpsConfigRegisterPipeline(snapshotName:"${snapshotObject[0].name}", applicationName: "FMR-POC")
                echo "change set registration set result ${changeSetRegResult}"
 	       junit "Globex*${env.BUILD_NUMBER}.xml"
             }//script
@@ -173,7 +173,7 @@ pipeline {
     stage ('UAT Deployment'){
     steps {
         script{
-            snDevOpsConfigExport(applicationName:"Globex-Website-Front-End",
+            snDevOpsConfigExport(applicationName:"FMR-POC",
                deployableName:"Globex-Prd",
                exporterName:"returnAllData",
                exporterFormat: "json", 
