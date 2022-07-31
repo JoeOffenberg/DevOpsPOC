@@ -5,7 +5,7 @@
          "filter":{
             "id":"6f58318e7fa2477a23112e8118c66f60",
             "expression":"http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",
-            "paused":false,
+            "paused":true,
             "description":"WordPress login paths",
             "ref":""
          },
