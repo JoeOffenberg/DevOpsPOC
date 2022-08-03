@@ -207,9 +207,9 @@ pipeline {
     
     }//Functional Testing
     
-    stage ('Change Management')
-	{node('built-in') 
+    stage ('Change Management'){
     steps {
+        node('built-in') 
         script{
 	snDevOpsPackage(name: "Globex-IaC-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "globex-iac.war", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "GlobexCorp"}], "branchName":"master"}""")
         snDevOpsChange()
